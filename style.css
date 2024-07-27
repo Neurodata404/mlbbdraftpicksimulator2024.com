@@ -1,0 +1,84 @@
+body {
+  background-color: #222;
+  color: white;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.draft-container {
+  display: flex;
+  gap: 20px;
+}
+
+.team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #333;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.team-name {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.ban-phase, .pick-phase {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+}
+
+.ban-slot, .hero-slot {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #555;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-selection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #333;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.hero-filters {
+  display: flex;
+  gap: 10px;
+}
+
+.filter-button {
+  background-color: #444;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.filter-button.active {
+  background-color: #555;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+}
+
+.hero-grid img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 5px;
+}

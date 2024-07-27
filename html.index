@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MLBB Draft Simulator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="draft-container">
+    <div class="team">
+      <div class="team-name">Team 1</div>
+      <div class="ban-phase">
+        <div class="ban-slot"></div>
+        <div class="ban-slot"></div>
+        <div class="ban-slot"></div>
+      </div>
+      <div class="pick-phase">
+        <div class="hero-slot"></div>
+        <div class="hero-slot"></div>
+        <div class="hero-slot"></div>
+        <div class="hero-slot"></div>
+        <div class="hero-slot"></div>
+      </div>
+    </div>
+
+    <div class="hero-selection">
+      <div class="hero-filters">
+        <button class="filter-button active" data-filter="all">All</button>
+        </div>
+      <div class="hero-grid">
+        </div>
+    </div>
+
+    <div class="team">
+      <div class="team-name">Team 2</div>
+      <div class="ban-phase">
+        <div class="ban-slot"></div>
+        <div class="ban-slot"></div>
+        <div class="ban-slot"></div>
+      </div>
+      <div class="pick-phase">
+        <div class="hero-slot"></div>
+        <div class="hero-slot"></div>
+        <div class="hero-slot"></div>
+        <div class="hero-slot"></div>
+        <div class="hero-slot"></div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
