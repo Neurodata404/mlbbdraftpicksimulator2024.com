@@ -1,53 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MLBB Draft Simulator</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLBB Draft Simulator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="draft-container">
-    <div class="team">
-      <div class="team-name">Team 1</div>
-      <div class="ban-phase">
-        <div class="ban-slot"></div>
-        <div class="ban-slot"></div>
-        <div class="ban-slot"></div>
-      </div>
-      <div class="pick-phase">
-        <div class="hero-slot"></div>
-        <div class="hero-slot"></div>
-        <div class="hero-slot"></div>
-        <div class="hero-slot"></div>
-        <div class="hero-slot"></div>
-      </div>
-    </div>
-
-    <div class="hero-selection">
-      <div class="hero-filters">
-        <button class="filter-button active" data-filter="all">All</button>
+    <div class="draft-container">
+        <div class="team-container" id="team1">
+            <div class="ban-indicators">
+                <div class="ban-slot">B</div>
+                <div class="ban-slot">B</div>
+                <div class="ban-slot">B</div>
+                <div class="ban-slot">B</div>
+                <div class="ban-slot">B</div>
+            </div>
+            <div class="team-slot">+</div>
+            <div class="team-slot">+</div>
+            <div class="team-slot">+</div>
+            <div class="team-slot">+</div>
+            <div class="team-slot">+</div>
         </div>
-      <div class="hero-grid">
+        <div class="main-container">
+            <div class="hero-tabs">
+                <div class="hero-tab active" onclick="filterHeroes('all')">All</div>
+                <div class="hero-tab" onclick="filterHeroes('mage')">Mage</div>
+                <div class="hero-tab" onclick="filterHeroes('tank')">Tank</div>
+                <div class="hero-tab" onclick="filterHeroes('marksman')">Marksman</div>
+                <div class="hero-tab" onclick="filterHeroes('assassin')">Assassin</div>
+                <div class="hero-tab" onclick="filterHeroes('fighter')">Fighter</div>
+                <div class="hero-tab" onclick="filterHeroes('support')">Support</div>
+            </div>
+            <div class="hero-grid">
+                <!-- Assassin Heroes -->
+                <img src="heroes/assassins/Aamon.png" alt="Aamon" class="hero assassin">
+                <img src="heroes/assassins/Benedetta.png" alt="Benedetta" class="hero assassin">
+                <img src="heroes/assassins/Fanny.png" alt="Fanny" class="hero assassin">
+                <img src="heroes/assassins/Gusion.png" alt="Gusion" class="hero assassin">
+                <img src="heroes/assassins/Hanzo.png" alt="Hanzo" class="hero assassin">
+                <img src="heroes/assassins/Harley.png" alt="Harley" class="hero assassin">
+                <img src="heroes/assassins/Hayabusa.png" alt="Hayabusa" class="hero assassin">
+                <img src="heroes/assassins/Helcurt.png" alt="Helcurt" class="hero assassin">
+                <img src="heroes/assassins/Joy.png" alt="Joy" class="hero assassin">
+                <img src="heroes/assassins/Karina.png" alt="Karina" class="hero assassin">
+                <img src="heroes/assassins/Khaleed.png" alt="Khaleed" class="hero assassin">
+                <img src="heroes/assassins/Lancelot.png" alt="Lancelot" class="hero assassin">
+                <img src="heroes/assassins/Ling.png" alt="Ling" class="hero assassin">
+                <img src="heroes/assassins/Natalia.png" alt="Natalia" class="hero assassin">
+                <img src="heroes/assassins/Nolan.png" alt="Nolan" class="hero assassin">
+                <img src="heroes/assassins/Saber.png" alt="Saber" class="hero assassin">
+                <img src="heroes/assassins/Selena.png" alt="Selena" class="hero assassin">
+                <img src="heroes/assassins/Yi_Sun-Shin.png" alt="Yi Sun-Shin" class="hero assassin">
+                
+                <!-- Fighter Heroes -->
+                <img src="heroes/fighter/Aldous.png" alt="Aldous" class="hero fighter">
+                <img src="heroes/fighter/Alpha.png" alt="Alpha" class="hero fighter">
+                <img src="heroes/fighter/Alucard.png" alt="Alucard" class="hero fighter">
+                <img src="heroes/fighter/Argus.png" alt="Argus" class="hero fighter">
+                <img src="heroes/fighter/Arlott.png" alt="Arlott" class="hero fighter">
+                <img src="heroes/fighter/Aulus.png" alt="Aulus" class="hero fighter">
+                <img src="heroes/fighter/Badang.png" alt="Badang" class="hero fighter">
+                <img src="heroes/fighter/Balmond.png" alt="Balmond" class="hero fighter">
+                <img src="heroes/fighter/Bane.png" alt="Bane" class="hero fighter">
+                <img src="heroes/fighter/Baxia.png" alt="Baxia" class="hero fighter">
+                <img src="heroes/fighter/Chou.png" alt="Chou" class="hero fighter">
+                <img src="heroes/fighter/Cici.png" alt="Cici" class="hero fighter">
+                <img src="heroes/fighter/Dyrroth.png" alt="Dyrroth" class="hero fighter">
+                <img src="heroes/fighter/Fredrinn.png" alt="Fredrinn" class="hero fighter">
+                <img src="heroes/fighter/Freya.png" alt="Freya" class="hero fighter">
+                <img src="heroes/fighter/Guinevere.png" alt="Guinevere" class="hero fighter">
+                <img src="heroes/fighter/Hilda.png" alt="Hilda" class="hero fighter">
+                <img src="heroes/fighter/Jawhead.png" alt="Jawhead" class="hero fighter">
+                <img src="heroes/fighter/Julian.png" alt="Julian" class="hero fighter">
+                <img src="heroes/fighter/Lapu-Lapu.png" alt="Lapu-Lapu" class="hero fighter">
+                <img src="heroes/fighter/Leomord.png" alt="Leomord" class="hero fighter">
+                <img src="heroes/fighter/Martis.png" alt="Martis" class="hero fighter">
+                <img src="heroes/fighter/Masha.png" alt="Masha" class="hero fighter">
+                <img src="heroes/fighter/Minsitthar.png" alt="Minsitthar" class="hero fighter">
+                <img src="heroes/fighter/Paquito.png" alt="Paquito" class="hero fighter">
+                <img src="heroes/fighter/Phoveus.png" alt="Phoveus" class="hero fighter">
+                <img src="heroes/fighter/Ruby.png" alt="Ruby" class="hero fighter">
+                <img src="heroes/fighter/Silvanna.png" alt="Silvanna" class="hero fighter">
+                <img src="heroes/fighter/Sun.png" alt="Sun" class="hero fighter">
+                <img src="heroes/fighter/Terizla.png" alt="Terizla" class="hero fighter">
+                <img src="heroes/fighter/Thamuz.png" alt="Thamuz" class="hero fighter">
+                <img src="heroes/fighter/X_Borg.png" alt="X Borg" class="hero fighter">
+                <img src="heroes/fighter/Yin.png" alt="Yin" class="hero fighter">
+                <img src="heroes/fighter/Yu_Zhong.png" alt="Yu Zhong" class="hero fighter">
+                <img src="heroes/fighter/Zilong.png" alt="Zilong" class="hero fighter">
+                
+                <!-- Mage Heroes -->
+                <img src="heroes/mage/Alice.png" alt="Alice" class="hero mage">
+                <img src="heroes/mage/Aurora.png" alt="Aurora" class="hero mage">
+                <img src="heroes/mage/Cecilion.png" alt="Cecilion" class="hero mage">
+                <img src="heroes/mage/Chang_e.png" alt="Chang'e" class="hero mage">
+                <img src="heroes/mage/Cyclops.png" alt="Cyclops" class="hero mage">
+                <img src="heroes/mage/Eudora.png" alt="Eudora" class="hero mage">
+                <img src="heroes/mage/Faramis.png" alt="Faramis" class="hero mage">
+                <img src="heroes/mage/Gord.png" alt="Gord" class="hero mage">
+                <img src="heroes/mage/Harith.png" alt="Harith" class="hero mage">
+                <img src="heroes/mage/Kagura.png" alt="Kagura" class="hero mage">
+                <img src="heroes/mage/Kadita.png" alt="Kadita" class="hero mage">
+                <img src="heroes/mage/Lylia.png" alt="Lylia" class="hero mage">
+                <img src="heroes/mage/Lunox.png" alt="Lunox" class="hero mage">
+                <img src="heroes/mage/Luo_Yi.png" alt="Luo Yi" class="hero mage">
+                <img src="heroes/mage/Nana.png" alt="Nana" class="hero mage">
+                <img src="heroes/mage/Pharsa.png" alt="Pharsa" class="hero mage">
+                <img src="heroes/mage/Valentina.png" alt="Valentina" class="hero mage">
+                <img src="heroes/mage/Valir.png" alt="Valir" class="hero mage">
+                <img src="heroes/mage/Vale.png" alt="Vale" class="hero mage">
+                <img src="heroes/mage/Vexana.png" alt="Vexana" class="hero mage">
+            </div>
+        </div>
+        <div class="team-container" id="team2">
+            <div class="ban-indicators">
+                <div class="ban-slot">B</div>
+                <div class="ban-slot">B</div>
+                <div class="ban-slot">B</div>
+                <div class="ban-slot">B</div>
+                <div class="ban-slot">B</div>
+            </div>
+            <div class="team-slot">+</div>
+            <div class="team-slot">+</div>
+            <div class="team-slot">+</div>
+            <div class="team-slot">+</div>
+            <div class="team-slot">+</div>
         </div>
     </div>
-
-    <div class="team">
-      <div class="team-name">Team 2</div>
-      <div class="ban-phase">
-        <div class="ban-slot"></div>
-        <div class="ban-slot"></div>
-        <div class="ban-slot"></div>
-      </div>
-      <div class="pick-phase">
-        <div class="hero-slot"></div>
-        <div class="hero-slot"></div>
-        <div class="hero-slot"></div>
-        <div class="hero-slot"></div>
-        <div class="hero-slot"></div>
-      </div>
-    </div>
-  </div>
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
