@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #001f3f;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,33 +10,42 @@ body {
 
 .draft-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80%;
-    max-width: 1200px;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 90%;
+    max-width: 1400px;
 }
 
 .team-container {
     display: flex;
-    justify-content: space-around;
-    width: 100%;
-    margin: 10px 0;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+    margin: 10px;
+}
+
+.team-name {
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 10px;
 }
 
 .ban-indicators {
     display: flex;
-    justify-content: space-between;
-    width: 15%;
+    justify-content: center;
+    margin-bottom: 10px;
 }
 
 .ban-slot {
-    background-color: #ddd;
-    width: 20px;
-    height: 20px;
+    background-color: red;
+    color: white;
+    width: 30px;
+    height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+    margin: 0 5px;
 }
 
 .team-slot {
@@ -47,20 +56,24 @@ body {
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    margin: 0 10px;
+    margin: 10px 0;
 }
 
 .main-container {
-    width: 100%;
+    width: 60%;
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hero-tabs {
     display: flex;
     justify-content: space-around;
+    width: 100%;
     margin-bottom: 20px;
 }
 
@@ -69,6 +82,7 @@ body {
     cursor: pointer;
     background-color: #ddd;
     border-radius: 5px;
+    margin: 0 5px;
 }
 
 .hero-tab.active {
@@ -79,6 +93,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
     gap: 10px;
+    width: 100%;
 }
 
 .hero {
