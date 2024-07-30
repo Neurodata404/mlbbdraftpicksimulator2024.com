@@ -19,5 +19,6 @@ function filterHeroes(role) {
 }
 
 // Initial call to show all heroes
-filterHeroes('all');
-
+document.addEventListener('DOMContentLoaded', () => {
+    filterHeroes('all');
+});
