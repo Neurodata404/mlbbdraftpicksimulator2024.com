@@ -1,65 +1,31 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f0f0f0;
-}
+document.addEventListener('DOMContentLoaded', () => {
+    const heroes = document.querySelectorAll('.hero');
+    const banSlot = document.getElementById('ban-slot');
+    const pickSlot = document.getElementById('pick-slot');
 
-.container {
-    text-align: center;
-}
+    heroes.forEach(hero => {
+        hero.addEventListener('dragstart', (e) => {
+            e.dataTransfer.setData('text/plain', hero.src);
+        });
+        hero.draggable = true;
+    });
 
-.hero-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 20px;
-}
+    [banSlot, pickSlot].forEach(slot => {
+        slot.addEventListener('dragover', (e) => {
+            e.preventDefault();
+        });
 
-.hero {
-    width: 100px;
-    height: 100px;
-    margin: 5px;
-    cursor: pointer;
-    position: relative;
-}
+        slot.addEventListener('drop', (e) => {
+            e.preventDefault();
+            const heroSrc = e.dataTransfer.getData('text/plain');
+            const hero = document.querySelector(`.hero[src="${heroSrc}"]`);
 
-.hero:hover::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.75);
-    color: #fff;
-    padding: 5px;
-    border-radius: 3px;
-    font-size: 12px;
-    white-space: nowrap;
-}
+            if (slot === banSlot) {
+                hero.style.pointerEvents = 'none'; // Disable dropped hero
+                hero.style.opacity = '0.5'; // Make it look disabled
+            }
 
-.ban-pick-container {
-    display: flex;
-    justify-content: center;
-}
-
-.ban-slot,
-.pick-slot {
-    width: 200px;
-    height: 200px;
-    border: 2px dashed #333;
-    margin: 0 10px;
-    position: relative;
-}
-
-.ban-slot {
-    background: #f8d7da;
-}
-
-.pick-slot {
-    background: #d4edda;
-}
+            slot.appendChild(hero.cloneNode(true)); // Add a clone of the hero to the slot
+        });
+    });
+});
