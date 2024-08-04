@@ -28,6 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const tooltip = document.createElement('div');
         tooltip.className = 'hero-tooltip';
         tooltip.innerText = hero.alt; // Use the alt attribute for the tooltip text
-        hero.parentElement.appendChild(tooltip);
+        hero.appendChild(tooltip); // Append the tooltip to the hero element
     });
 });
