@@ -108,13 +108,14 @@ body {
     border-radius: 10px;
     cursor: pointer;
     transition: transform 0.2s;
-    position: relative; /* Position the hero for the tooltip */
+    position: relative; /* Ensure relative positioning for tooltip */
 }
 
 .hero:hover {
     transform: scale(1.1);
 }
 
+/* Tooltip styling */
 .hero-tooltip {
     visibility: hidden;
     background-color: black;
@@ -124,15 +125,13 @@ body {
     padding: 5px;
     position: absolute;
     z-index: 1;
-    bottom: 110%; /* Position the tooltip above the image */
+    bottom: 110%; /* Position above the hero image */
     left: 50%;
     transform: translateX(-50%);
     opacity: 0;
     transition: opacity 0.3s;
-    width: max-content;
-    max-width: 120px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     white-space: nowrap; /* Prevents line breaks */
+    pointer-events: none; /* Avoid tooltips catching mouse events */
 }
 
 .hero:hover .hero-tooltip {
