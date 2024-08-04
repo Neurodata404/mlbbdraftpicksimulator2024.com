@@ -27,11 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     heroes.forEach(hero => {
         const tooltip = document.createElement('div');
         tooltip.className = 'hero-tooltip';
-        tooltip.innerText = hero.alt; // Set the tooltip text from the image alt attribute
-
-        // Append the tooltip to each hero's parent element
-        hero.parentElement.classList.add('hero-container');
+        tooltip.innerText = hero.alt; // Use the alt attribute for the tooltip text
         hero.parentElement.appendChild(tooltip);
     });
 });
-
