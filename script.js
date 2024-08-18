@@ -1,33 +1,43 @@
-function filterHeroes(role) {
+document.addEventListener('DOMContentLoaded', function() {
     const heroes = document.querySelectorAll('.hero');
-    heroes.forEach(hero => {
-        if (role === 'all' || hero.classList.contains(role)) {
-            hero.style.display = 'block';
-        } else {
-            hero.style.display = 'none';
-        }
-    });
-
-    const tabs = document.querySelectorAll('.hero-tab');
-    tabs.forEach(tab => {
-        if (tab.textContent.toLowerCase() === role) {
-            tab.classList.add('active');
-        } else {
-            tab.classList.remove('active');
-        }
-    });
-}
-
-// Initial call to show all heroes
-document.addEventListener('DOMContentLoaded', () => {
-    filterHeroes('all');
-
-    const heroes = document.querySelectorAll('.hero');
+    const banSlots = document.querySelectorAll('.ban-slot');
+    const pickSlots = document.querySelectorAll('.pick-slot');
 
     heroes.forEach(hero => {
-        const tooltip = document.createElement('div');
-        tooltip.className = 'hero-tooltip';
-        tooltip.innerText = hero.alt; // Use the alt attribute for the tooltip text
-        hero.appendChild(tooltip); // Append the tooltip to the hero element
+        hero.addEventListener('dragstart', dragStart);
     });
+
+    banSlots.forEach(slot => {
+        slot.addEventListener('dragover', dragOver);
+        slot.addEventListener('drop', dropHero);
+    });
+
+    pickSlots.forEach(slot => {
+        slot.addEventListener('dragover', dragOver);
+        slot.addEventListener('drop', dropHero);
+    });
+
+    function dragStart(event) {
+        event.dataTransfer.setData('text/plain', event.target.dataset.hero);
+    }
+
+    function dragOver(event) {
+        event.preventDefault();
+    }
+
+    function dropHero(event) {
+        event.preventDefault();
+        const heroName = event.dataTransfer.getData('text/plain');
+        const heroElement = document.querySelector(`.hero[data-hero="${heroName}"]`);
+
+        // Set hero image in the slot
+        event.target.style.backgroundImage = `url('heroes/assassins/${heroName}.png')`;
+        event.target.style.backgroundSize = 'cover';
+
+        // Lock the hero in the pool
+        if (heroElement) {
+            heroElement.classList.add('locked');
+            heroElement.draggable = false;
+        }
+    }
 });
