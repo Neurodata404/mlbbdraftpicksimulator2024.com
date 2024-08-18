@@ -1,43 +1,37 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     const heroes = document.querySelectorAll('.hero');
-    const banSlots = document.querySelectorAll('.ban-slot');
-    const pickSlots = document.querySelectorAll('.pick-slot');
+    const slots = document.querySelectorAll('.droppable');
+
+    let draggedHero = null;
 
     heroes.forEach(hero => {
-        hero.addEventListener('dragstart', dragStart);
+        hero.addEventListener('dragstart', () => {
+            draggedHero = hero;
+            setTimeout(() => {
+                hero.style.display = 'none'; // Hide hero during drag
+            }, 0);
+        });
+
+        hero.addEventListener('dragend', () => {
+            setTimeout(() => {
+                draggedHero.style.display = 'block'; // Show hero after drag
+                draggedHero = null;
+            }, 0);
+        });
     });
 
-    banSlots.forEach(slot => {
-        slot.addEventListener('dragover', dragOver);
-        slot.addEventListener('drop', dropHero);
+    slots.forEach(slot => {
+        slot.addEventListener('dragover', e => {
+            e.preventDefault();
+        });
+
+        slot.addEventListener('drop', () => {
+            if (!slot.children.length && draggedHero) {
+                slot.appendChild(draggedHero.cloneNode(true));
+                draggedHero.style.display = 'none'; // Hide original hero after drop
+                draggedHero = null;
+                slot.classList.add('filled'); // Optional: Apply style for filled slot
+            }
+        });
     });
-
-    pickSlots.forEach(slot => {
-        slot.addEventListener('dragover', dragOver);
-        slot.addEventListener('drop', dropHero);
-    });
-
-    function dragStart(event) {
-        event.dataTransfer.setData('text/plain', event.target.dataset.hero);
-    }
-
-    function dragOver(event) {
-        event.preventDefault();
-    }
-
-    function dropHero(event) {
-        event.preventDefault();
-        const heroName = event.dataTransfer.getData('text/plain');
-        const heroElement = document.querySelector(`.hero[data-hero="${heroName}"]`);
-
-        // Set hero image in the slot
-        event.target.style.backgroundImage = `url('heroes/assassins/${heroName}.png')`;
-        event.target.style.backgroundSize = 'cover';
-
-        // Lock the hero in the pool
-        if (heroElement) {
-            heroElement.classList.add('locked');
-            heroElement.draggable = false;
-        }
-    }
 });
