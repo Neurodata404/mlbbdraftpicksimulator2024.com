@@ -1,37 +1,33 @@
-document.addEventListener('DOMContentLoaded', () => {
+function filterHeroes(role) {
     const heroes = document.querySelectorAll('.hero');
-    const slots = document.querySelectorAll('.droppable');
-
-    let draggedHero = null;
-
     heroes.forEach(hero => {
-        hero.addEventListener('dragstart', () => {
-            draggedHero = hero;
-            setTimeout(() => {
-                hero.style.display = 'none'; // Hide hero during drag
-            }, 0);
-        });
-
-        hero.addEventListener('dragend', () => {
-            setTimeout(() => {
-                draggedHero.style.display = 'block'; // Show hero after drag
-                draggedHero = null;
-            }, 0);
-        });
+        if (role === 'all' || hero.classList.contains(role)) {
+            hero.style.display = 'block';
+        } else {
+            hero.style.display = 'none';
+        }
     });
 
-    slots.forEach(slot => {
-        slot.addEventListener('dragover', e => {
-            e.preventDefault();
-        });
+    const tabs = document.querySelectorAll('.hero-tab');
+    tabs.forEach(tab => {
+        if (tab.textContent.toLowerCase() === role) {
+            tab.classList.add('active');
+        } else {
+            tab.classList.remove('active');
+        }
+    });
+}
 
-        slot.addEventListener('drop', () => {
-            if (!slot.children.length && draggedHero) {
-                slot.appendChild(draggedHero.cloneNode(true));
-                draggedHero.style.display = 'none'; // Hide original hero after drop
-                draggedHero = null;
-                slot.classList.add('filled'); // Optional: Apply style for filled slot
-            }
-        });
+// Initial call to show all heroes
+document.addEventListener('DOMContentLoaded', () => {
+    filterHeroes('all');
+
+    const heroes = document.querySelectorAll('.hero');
+
+    heroes.forEach(hero => {
+        const tooltip = document.createElement('div');
+        tooltip.className = 'hero-tooltip';
+        tooltip.innerText = hero.alt; // Use the alt attribute for the tooltip text
+        hero.appendChild(tooltip); // Append the tooltip to the hero element
     });
 });
